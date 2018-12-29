@@ -218,8 +218,8 @@ function obj.windowClosing(cmd, wv, opt)
    if cmd == "closing" then
       if obj.webview~=nil then
          -- obj.webview:sendToBack()
-         -- obj.webview:hide()
-         obj.webview:delete()
+         obj.webview:hide()
+         -- obj.webview:delete()
          obj.webview=nil
          if obj.prevFocusedWindow ~=nil then
             obj.prevFocusedWindow:focus()
@@ -231,8 +231,8 @@ function obj.windowFocusChange(cmd, wv, opt)
    if cmd == "focusChange" then
       if obj.webview~=nil and not opt  then
          -- obj.webview:sendToBack()
-         -- obj.webview:hide()
-         obj.webview:delete()
+         obj.webview:hide()
+         -- obj.webview:delete()
          obj.webview=nil
          if obj.prevFocusedWindow ~=nil then
             obj.prevFocusedWindow:focus()
@@ -242,8 +242,8 @@ function obj.windowFocusChange(cmd, wv, opt)
    elseif cmd == "closing" then
       if obj.webview~=nil then
          -- obj.webview:sendToBack()
-         -- obj.webview:hide()
-         obj.webview:delete()
+         obj.webview:hide()
+         -- obj.webview:delete()
          obj.webview=nil
          if obj.prevFocusedWindow ~=nil then
             obj.prevFocusedWindow:focus()
@@ -256,11 +256,12 @@ function obj.clicked()
    if obj.webview ~=nil then
       -- obj.webview:sendToBack()
       -- obj.webview:hide()
-      obj.webview:delete()
-      obj.webview=nil
       if obj.prevFocusedWindow ~=nil then
          obj.prevFocusedWindow:focus()
       end
+      obj.webview:hide()
+      -- obj.webview:delete()
+      obj.webview=nil
       return
    end
    obj.prevFocusedWindow = hs.window.focusedWindow()
@@ -712,7 +713,7 @@ function obj.clicked()
          end
 
          if obj.autoHideWindowAfterPasswordGenerated or input.body["CloseWindow"] then
-            obj.webview:delete()
+            obj.webview:hide()
             obj.webview=nil
             obj.prevFocusedWindow:focus()
          end
